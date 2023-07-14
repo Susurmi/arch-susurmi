@@ -13,8 +13,9 @@ setxkbmap de &
 
 # resolution and wallpaper
 #xrandr --output "" --mode 1920x1080 &
-#feh
+~/.fehbg &
 
 #start dwm
 picom &
+dwmblocks &
 exec dwm
