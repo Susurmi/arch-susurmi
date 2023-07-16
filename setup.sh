@@ -8,4 +8,4 @@ sudo pacman -S xorg xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk
 pacman -S rofi picom feh
 
 # Install fonts
-pacman -S ttf-joypixels terminus-font
+pacman -S ttf-joypixels terminus-font ttf-awesome-font
