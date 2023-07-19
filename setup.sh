@@ -1,11 +1,19 @@
-# Get nedded base dependencies
-sudo pacman -Syu git wget vim kitty neofetch
+# Get needed base dependencies
+sudo pacman -Syu --noconfirm git wget vim kitty neofetch
 
-# Get minimal xorg setup
-sudo pacman -S xorg xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk
+# Get xorg packages
+sudo pacman -S --noconfirm xorg xorg-server xorg-xinit xdg-utils libx11 libxinerama libxft webkit2gtk
 
 # Install Rofi, Picom and feh
-pacman -S rofi picom feh
+pacman -S --noconfirm rofi picom feh
 
 # Install fonts
-pacman -S ttf-joypixels terminus-font ttf-awesome-font
+pacman -S --noconfirm ttf-joypixels terminus-font ttf-font-awesome
+
+# Install YAY
+mkdir -p /home/$ROOT_USER/Downloads
+cd /home/$ROOT_USER/Downloads
+git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
+# Install Brave Browser
+yay -S --noconfirm brave-bin
