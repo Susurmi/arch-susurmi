@@ -1,21 +1,20 @@
-
 #!/bin/bash
 
 #source for the terminal
 xrdb -merge $HOME/.xres &
 
-# font
+# set and reload fonts
 xset fp+ $HOME/.fonts &
 xset fp rehash &
 
 # set keyboard layout 
 setxkbmap de &
 
-# resolution and wallpaper
+# set resolution and wallpaper
 #xrandr --output "" --mode 1920x1080 &
 ~/.fehbg &
 
-#start dwm
+#start picom and dwm
 picom &
-dwmblocks &
+#dwmblocks &
 exec dwm
