@@ -10,6 +10,8 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$'
 
 alias la='ls -lA'
+alias ll='ls -l'
+
 alias vup='wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+'
 alias vdown='wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-'
 alias vmute='wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'

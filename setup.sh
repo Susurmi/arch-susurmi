@@ -46,7 +46,7 @@ sleep 2
 pacman -Syu --noconfirm
 
 # Get needed base packages
-pacman -S --noconfirm wget vim kitty
+pacman -S --noconfirm wget vim kitty firefox
 
 # Get xorg/libx11 packages
 pacman -S --noconfirm xorg xorg-server xorg-xinit xdg-user-dirs libx11 libxinerama libxft webkit2gtk
@@ -64,8 +64,22 @@ su -c 'xdg-user-dirs-update' $username
 cp "$folderpath/dotfiles/.bashrc" "/home/$username/.bashrc" && \
 su -c "source /home/$username/.bashrc" "$username"
 
+# Copy kitty.conf
+touch /home/$username/.config/kitty/kitty.cfg && \
+cp $folderpath/dotconfig/kitty/kitty.cfg /home/$username/.config/kitty/kitty.cfg
+
+# Copy rofi theme
+touch /home/$username/.config/rofi/config.rasi && \
+cp $folderpath/dotconfig/rofi/config.rasi /home/$username/.config/rofi/config.rasi
+
+# Copy .xinitrc
+su -c "touch /home/$username/.xinitrc" && \
+su -c "cp $folderpath/dotfiles/.xinitrc /home/$username/.xinitrc" && \
+chmod +x /home/$username/.xinitrc
+
 # Get/Set Wallpaper
-su -c 'wget -P /home/$username/Bilder -O wallpaper.png https://w.wallhaven.cc/full/9m/wallhaven-9mjoy1.png' $username && \
+su -c "wget -O wallpaper.png https://w.wallhaven.cc/full/9m/wallhaven-9mjoy1.png" $username && \
+mv "$folderpath/wallpaper.png" "/home/$username/Bilder" && \
 touch "/home/$username/.fehbg" && \
 cp "$folderpath/dotfiles/.fehbg" "/home/$username/.fehbg"
 
@@ -74,16 +88,14 @@ pacman -S --noconfirm ly && \
 systemctl enable ly.service && \
 systemctl disable getty@tty2.service
 
+# Install dwm
+su -c "mkdir -p /home/$username/.suckless" $username && \
+cp -r $folderpath/dwm /home/$username/.suckless/ && \
+cd /home/$username/.suckless/dwm && \
+su -c "make" $username && \
+make clean install && \
+cd $folderpath
+
 # Audio 
 pacman -S --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber && \
-su -c 'systemctl enable pipewire pipewire-pulse wireplumber' $username
-
-
-# Created by 
-#  ███████╗██╗   ██╗███████╗██╗   ██╗██████╗ ███╗   ███╗██╗
-#  ██╔════╝██║   ██║██╔════╝██║   ██║██╔══██╗████╗ ████║██║
-#  ███████╗██║   ██║███████╗██║   ██║██████╔╝██╔████╔██║██║
-#  ╚════██║██║   ██║╚════██║██║   ██║██╔══██╗██║╚██╔╝██║██║
-#  ███████║╚██████╔╝███████║╚██████╔╝██║  ██║██║ ╚═╝ ██║██║
-#  ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝
-# https://github.com/susurmi
+su -c "systemctl --user enable pipewire pipewire-pulse wireplumber" $username
