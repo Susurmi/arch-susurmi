@@ -11,8 +11,8 @@ xset fp rehash &
 setxkbmap de &
 
 # set resolution and wallpaper
-#xrandr --output "" --mode 1920x1080 &
-~/.fehbg &
+xrandr --output "Virtual-1" --mode 1920x1080 &
+feh --no-fehbg --bg-fill /home/$USER/Bilder/wallpaper.png &
 
 #start picom and dwm
 picom &

@@ -65,23 +65,20 @@ cp "$folderpath/dotfiles/.bashrc" "/home/$username/.bashrc" && \
 su -c "source /home/$username/.bashrc" "$username"
 
 # Copy kitty.conf
-touch /home/$username/.config/kitty/kitty.cfg && \
-cp $folderpath/dotconfig/kitty/kitty.cfg /home/$username/.config/kitty/kitty.cfg
+mkdir -p /home/$username/.config/kitty && \
+cp $folderpath/dotconfig/kitty/kitty.cfg /home/$username/.config/kitty/
 
 # Copy rofi theme
-touch /home/$username/.config/rofi/config.rasi && \
-cp $folderpath/dotconfig/rofi/config.rasi /home/$username/.config/rofi/config.rasi
+mkdir -p /home/$username/.config/rofi && \
+cp $folderpath/dotconfig/rofi/config.rasi /home/$username/.config/rofi/
 
 # Copy .xinitrc
-su -c "touch /home/$username/.xinitrc" && \
-su -c "cp $folderpath/dotfiles/.xinitrc /home/$username/.xinitrc" && \
+cp $folderpath/dotfiles/.xinitrc /home/$username/&& \
 chmod +x /home/$username/.xinitrc
 
 # Get/Set Wallpaper
 su -c "wget -O wallpaper.png https://w.wallhaven.cc/full/9m/wallhaven-9mjoy1.png" $username && \
 mv "$folderpath/wallpaper.png" "/home/$username/Bilder" && \
-touch "/home/$username/.fehbg" && \
-cp "$folderpath/dotfiles/.fehbg" "/home/$username/.fehbg"
 
 # Install ly as login manager
 pacman -S --noconfirm ly && \
@@ -92,7 +89,7 @@ systemctl disable getty@tty2.service
 su -c "mkdir -p /home/$username/.suckless" $username && \
 cp -r $folderpath/dwm /home/$username/.suckless/ && \
 cd /home/$username/.suckless/dwm && \
-su -c "make" $username && \
+make && \
 make clean install && \
 cd $folderpath
 
