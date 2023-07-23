@@ -8,4 +8,4 @@ this is currently in the making and may not fully work.
 
 ---
 
-Resources used to create this repository: [resources.md](https://github.com/susurmi/arch-susurmi/resources.md)
+Resources used to create this repository: [resources.md](https://github.com/Susurmi/arch-susurmi/blob/main/resources.md)
