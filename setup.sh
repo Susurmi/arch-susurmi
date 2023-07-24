@@ -40,13 +40,13 @@ ascii_art="
 
 # Display the colored ASCII art
 print_color "31;1" "$ascii_art"
-sleep 2
+sleep 1
 
 # Update Pkg Db and upgrade System
 pacman -Syu --noconfirm
 
 # Get needed base packages
-pacman -S --noconfirm wget vim kitty firefox
+pacman -S --noconfirm wget vim kitty firefox go
 
 # Get xorg/libx11 packages
 pacman -S --noconfirm xorg xorg-server xorg-xinit xdg-user-dirs libx11 libxinerama libxft webkit2gtk
@@ -66,7 +66,7 @@ su -c "source /home/$username/.bashrc" "$username"
 
 # Copy kitty.conf
 mkdir -p /home/$username/.config/kitty && \
-cp $folderpath/dotconfig/kitty/kitty.cfg /home/$username/.config/kitty/
+cp $folderpath/dotconfig/kitty/kitty.conf /home/$username/.config/kitty/
 
 # Copy rofi theme
 mkdir -p /home/$username/.config/rofi && \
@@ -95,4 +95,4 @@ cd $folderpath
 
 # Audio 
 pacman -S --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber && \
-su -c "systemctl --user enable pipewire pipewire-pulse wireplumber" $username
+#su -c "systemctl --user enable pipewire pipewire-pulse wireplumber" $username
