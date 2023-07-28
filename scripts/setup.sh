@@ -55,7 +55,7 @@ pacman -S --noconfirm xorg xorg-server xorg-xinit xdg-user-dirs libx11 libxinera
 pacman -S --noconfirm rofi picom feh
 
 # Install fonts
-pacman -S --noconfirm ttf-joypixels terminus-font ttf-font-awesome
+pacman -S --noconfirm ttf-joypixels terminus-font ttf-font-awesome ttf-liberation
 
 # Generate user folders
 su -c 'xdg-user-dirs-update' $username
