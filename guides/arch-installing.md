@@ -73,14 +73,14 @@ Creates the necessary boot directory and mounts the efi partition there.
 `$ swapon /dev/>SWAP Partition<`  
 Turns on SWAP with the given partition.
 
-# 2 Running system Installation
+# 2. Running system Installation
 
 `$ pacstrap /mnt base linux linux-firmware sof-firmware base-devel grub efibootmgr nano networkmanager`  
 this installs the **base archlinux**, a firmware for newer soundcards, **base-devel** for compiling/installing/packaging,
 **grub and efibootmgr** for using grub with efi as boot management, **nano** as a basic text editor and
 **networkmanager** for managing the systems network connection.
 
-# 3 Configuring the system
+# 3. Configuring the system
 
 ### 3.1 Running fstab
 

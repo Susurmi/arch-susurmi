@@ -2,9 +2,7 @@
 
 my arch repo to save all relevant information on arch i need to setup my arch desktop.
 
-also working on an install script for automatic setup.
-
-this is currently in the making and may not fully work.
+scripts may not fully work.
 
 <br><br><br>
 
