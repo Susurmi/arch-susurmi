@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Run the command and capture its output
+output=$(rivalcfg --battery-level)
+
+# Set Mouse RGB
+rivalcfg --top-color white --middle-color white --bottom-color white
+
+# Extract the percentage
+percentage=$(echo "$output" | grep -o '[0-9]\+ %'| sed 's/ //')
+
+# Print the extracted percentage
+echo "$percentage"
