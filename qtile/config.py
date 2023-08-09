@@ -23,8 +23,9 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-from libqtile import bar, layout, widget
+import os
+import subprocess
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -82,7 +83,8 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod, "shift"], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn("rofi -show run")),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -116,7 +118,8 @@ layouts = [
         border_focus_stack=colors[3], 
         border_focus=colors[3],
         border_normal=colors[1],
-        border_width=3
+        border_width=3,
+	margin=[5,10,5,5],
         ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -139,75 +142,150 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(
-                    active=colors[4],
-                    disable_drag=True,
-                    hide_unused=False,
-                    highlight_method='block',
-                    inactive=colors[4],
-                    rounded=False,
-                    this_screen_border=colors[3],
-                    this_current_screen_border=colors[3],
-                    urgent_alert_method='block'
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/arch.png',
+                    margin=2,
+                    mouse_callbacks={'Button1': lazy.shutdown()},
                 ),
-                widget.Prompt(),
-                widget.WindowName(),
                 widget.Sep(
                     background=colors[0],
-                    foreground=colors[4],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.GroupBox(
+                    fontsize=16,
+                    borderwidth=3,
+                    highlight_method='block',
+                    active=colors[5],
+                    block_highlight_text_color=colors[4],
+                    highlight_color=colors[2],
+                    inactive=colors[2],
+                    foreground=colors[2],
+                    background=colors[0],
+                    this_current_screen_border=colors[0],
+                    this_screen_border=colors[0],
+                    other_current_screen_border=colors[0],
+                    other_screen_border=colors[0],
+                    urgent_border=colors[0],
+                    rounded=True,
+                    disable_drag=True,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/search.png',
+                    margin=3,
+                    mouse_callbacks={'Button1': lazy.spawn("rofi -show run")},
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.Prompt(),
+                widget.WindowName(
+                    fontsize=14,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
                     linewidth=1,
                     padding=10
                 ),
                 widget.Clock(
                     background=colors[0],
                     foreground=colors[4],
-                    fontsize=12,
+                    fontsize=14,
                     format="%d %B (%A) %H:%M",
                 ),
             ],
             24,
-            background= "#2E3440",
+            background=colors[0],
+	        margin=[10, 10, 4, 10]
         ),
     ),
     Screen(
         top=bar.Bar(
             [
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/arch.png',
+                    margin=2,
+                    mouse_callbacks={'Button1': lazy.shutdown()},
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
                 widget.GroupBox(
-                    active=colors[4],
-                    disable_drag=True,
-                    hide_unused=False,
+                    fontsize=16,
+                    borderwidth=3,
                     highlight_method='block',
-                    inactive=colors[4],
-                    rounded=False,
-                    this_screen_border=colors[3],
-                    this_current_screen_border=colors[3],
-                    urgent_alert_method='block'
+                    active=colors[5],
+                    block_highlight_text_color=colors[4],
+                    highlight_color=colors[2],
+                    inactive=colors[2],
+                    foreground=colors[2],
+                    background=colors[0],
+                    this_current_screen_border=colors[0],
+                    this_screen_border=colors[0],
+                    other_current_screen_border=colors[0],
+                    other_screen_border=colors[0],
+                    urgent_border=colors[0],
+                    rounded=True,
+                    disable_drag=True,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/search.png',
+                    margin=3,
+                    mouse_callbacks={'Button1': lazy.spawn("rofi -show run")},
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
                 ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(
+                    fontsize=14,
+                ),
                 widget.Systray(
                     background=colors[0],
                 ),
                 widget.Sep(
                     background=colors[0],
-                    foreground=colors[4],
+                    foreground=colors[3],
                     linewidth=1,
                     padding=10
                 ),
                 widget.Clock(
                     background=colors[0],
                     foreground=colors[4],
-                    fontsize=12,
-                    format="%d %B (%A) %H:%M"
+                    fontsize=14,
+                    format="%d %B (%A) %H:%M",
                 ), 
             ],
             24,
-            background= "#2E3440",
+            background=colors[0],
+	        margin=[10, 10, 4, 10]
         ),
     ),
 ]
@@ -240,9 +318,15 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 
+# Starting the autostart shell script
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
+    subprocess.Popen([home])
+
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
-auto_minimize = False
+auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
