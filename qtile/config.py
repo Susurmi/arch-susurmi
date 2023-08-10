@@ -276,6 +276,29 @@ screens = [
                     linewidth=1,
                     padding=10
                 ),
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/mouse.png',
+                    margin=4,
+                ),
+                widget.GenPollText(
+                    name='mouse-battery',
+                    update_interval=600,
+                    fontsize=14,
+                    fmt='{}',
+                    func= lambda: subprocess.check_output(
+                        '/home/alex/.local/bin/mouse-battery',
+                    ).decode('utf-8').strip(),
+                    mouse_callbacks = {
+                        'Button1':
+                        lazy.widget['mouse-battery'].eval('self.update(self.poll())'),
+                    },
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
                 widget.Clock(
                     background=colors[0],
                     foreground=colors[4],
