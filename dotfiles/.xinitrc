@@ -18,3 +18,6 @@ feh --no-fehbg --bg-fill /home/$USER/Bilder/wallpaper.png &
 picom &
 #dwmblocks &
 exec dwm
+
+
+# i dont use xinitrc at the moment so this is most likely outdated

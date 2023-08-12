@@ -2,7 +2,7 @@
 
 my arch repo to save all relevant information on arch i need to setup my arch desktop.
 
-scripts may not fully work.
+#### ! scripts may not fully work. !
 
 <br><br>
 

@@ -7,11 +7,11 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\#'
+PS1='\033[01;34m\]\w \033[00m\]-> '
 
-alias ll='ls -lA'
+alias ll='ls -lA --color=auto'
 
-alias pi='sudo pacman -Sy'
+alias sysupdate="sudo pacman -Syyu"
 
 alias vup='wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+'
 alias vdown='wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-'

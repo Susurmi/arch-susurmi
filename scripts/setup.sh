@@ -49,10 +49,10 @@ pacman -Syu --noconfirm
 pacman -S --noconfirm wget vim kitty firefox go
 
 # Get xorg/libx11 packages
-pacman -S --noconfirm xorg xorg-server xorg-xinit xdg-user-dirs libx11 libxinerama libxft webkit2gtk
+pacman -S --noconfirm xorg xorg-server xorg-xinit xdg-user-dirs libx11 gtk3
 
-# Install Rofi, Picom and feh
-pacman -S --noconfirm rofi picom feh
+# Install Rofi, Picom, feh, thunar
+pacman -S --noconfirm rofi picom feh thunar
 
 # Install fonts
 pacman -S --noconfirm ttf-joypixels terminus-font ttf-font-awesome ttf-liberation
@@ -72,12 +72,8 @@ cp $folderpath/dotconfig/kitty/kitty.conf /home/$username/.config/kitty/
 mkdir -p /home/$username/.config/rofi && \
 cp $folderpath/dotconfig/rofi/config.rasi /home/$username/.config/rofi/
 
-# Copy .xinitrc
-cp $folderpath/dotfiles/.xinitrc /home/$username/&& \
-chmod +x /home/$username/.xinitrc
-
 # Get/Set Wallpaper
-su -c "wget -O wallpaper.png https://w.wallhaven.cc/full/9m/wallhaven-9mjoy1.png" $username && \
+su -c "wget -O wallpaper.png https://w.wallhaven.cc/full/p9/wallhaven-p97l5e.png" $username && \
 mv "$folderpath/wallpaper.png" "/home/$username/Bilder" && \
 
 # Install ly as login manager
@@ -85,13 +81,10 @@ pacman -S --noconfirm ly && \
 systemctl enable ly.service && \
 systemctl disable getty@tty2.service
 
-# Install dwm
-su -c "mkdir -p /home/$username/.suckless" $username && \
-cp -r $folderpath/dwm /home/$username/.suckless/ && \
-cd /home/$username/.suckless/dwm && \
-make && \
-make clean install && \
-cd $folderpath
+# Install Qtile
+pacman -S --noconfirm qtile && \
+mkdir -p /home/$username/.config/qtile && \
+cp -r $folderpath/dotconfig/qtile /home/$username/.config/
 
 # Audio 
 pacman -S --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber && \
