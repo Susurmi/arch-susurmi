@@ -25,3 +25,6 @@ feh --no-fehbg --bg-fill '/home/alex/Bilder/wallpapers/wallpaper.png'
 /usr/bin/lxpolkit &
 dunst &
 picom &
+
+discord --start-minimized &
+steam -silent & 
