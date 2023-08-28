@@ -1,8 +1,6 @@
 # arch-susurmi
 
-my arch repo to save all relevant information on arch i need to setup my arch desktop.
-
-#### ! scripts may not fully work. !
+my arch repo to save information on arch i need/use to setup my arch desktop.
 
 <br><br>
 
