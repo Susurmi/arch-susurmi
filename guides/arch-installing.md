@@ -6,7 +6,7 @@ Download the latest iso from [archlinux.com](https://archlinux.org/download/).
 
 ### 0.2 Flash a usb drive for installation
 
-Plugin a USB Stick with around 16GB and format it as writtenin the [USB flash installation medium](https://wiki.archlinux.org/title/USB_flash_installation_medium) guide.  
+Plugin a USB Stick with around 16GB and format it as writtenin the [USB flash installation medium](https://wiki.archlinux.org/title/USB_flash_installation_medium) guide.
 I prefer **Using the ISO as is (BIOS and UEFI)** variant using [dd](https://wiki.archlinux.org/title/Dd).
 
 # 1. Boot the live environment
@@ -19,16 +19,16 @@ this loads the german qwertz keyboard layout.
 ### 1.2 Verify the boot mode
 
 `$ cat /sys/firmware/efi/fw_platform_size`
-this ensures that u booted in to UEFI mode.  
-I had to change my boot settings from UEFI+LEGACY_BOOT to only UEFI in my BIOS Menu.  
+this ensures that u booted in to UEFI mode.
+I had to change my boot settings from UEFI+LEGACY_BOOT to only UEFI in my BIOS Menu.
 The expected output is: **64**.
 
 ### 1.3 Check for internet connection
 
 `$ ping -c 5 archlinux.org`
 
-this will run 5 pings to the archlinux page to ensure that you got a working internet connection.  
-There should be no problems when running a LAN connection, for WIFI check out [iwd](https://wiki.archlinux.org/title/Iwd#iwctl).  
+this will run 5 pings to the archlinux page to ensure that you got a working internet connection.
+There should be no problems when running a LAN connection, for WIFI check out [iwd](https://wiki.archlinux.org/title/Iwd#iwctl).
 If this doesn't work check out the [1.7 Connect to the internet](https://wiki.archlinux.org/title/Installation_guide) section.
 
 ### 1.4 Update the system clock
@@ -73,14 +73,14 @@ Creates the necessary boot directory and mounts the efi partition there.
 `$ swapon /dev/>SWAP Partition<`  
 Turns on SWAP with the given partition.
 
-# 2. Running system Installation
+# 2 Running system Installation
 
 `$ pacstrap /mnt base linux linux-firmware sof-firmware base-devel grub efibootmgr nano networkmanager`  
 this installs the **base archlinux**, a firmware for newer soundcards, **base-devel** for compiling/installing/packaging,
 **grub and efibootmgr** for using grub with efi as boot management, **nano** as a basic text editor and
 **networkmanager** for managing the systems network connection.
 
-# 3. Configuring the system
+# 3 Configuring the system
 
 ### 3.1 Running fstab
 
@@ -121,6 +121,7 @@ then save and exit.
 make the keyboard layout change persistent by typing :
 
 > KEYMAP=de-latin1
+> XKBMAP=de
 
 in this file, save and exit.
 
