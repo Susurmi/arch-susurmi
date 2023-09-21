@@ -85,6 +85,8 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "shift"], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "r", lazy.spawn("rofi -show run")),
+    Key([mod], "f", lazy.spawn("firefox")),
+    Key([mod], "o", lazy.spawn("obsidian")),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -103,7 +105,7 @@ for i in groups:
             Key(
                 [mod, "shift"],
                 i.name,
-                lazy.window.togroup(i.name, switch_group=True),
+                lazy.window.togroup(i.name, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
             # Or, use below if you prefer not to switch to that group.
@@ -119,9 +121,15 @@ layouts = [
         border_focus=colors[3],
         border_normal=colors[1],
         border_width=3,
-	margin=[5,10,5,5],
+	    margin=[5,10,5,5],
         ),
-    layout.Max(),
+    layout.Max(
+        border_focus_stack=colors[3], 
+        border_focus=colors[3],
+        border_normal=colors[1],
+        border_width=3,
+	    margin=[5,10,5,5],
+        ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -131,7 +139,13 @@ layouts = [
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
-    # layout.VerticalTile(),
+     layout.VerticalTile(
+        border_focus_stack=colors[3], 
+        border_focus=colors[3],
+        border_normal=colors[1],
+        border_width=3,
+	    margin=[5,10,5,5],
+        ),
     # layout.Zoomy(),
 ]
 
@@ -146,17 +160,6 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Image(
-                    filename='/home/alex/.config/qtile/assets/arch.png',
-                    margin=2,
-                    mouse_callbacks={'Button1': lazy.shutdown()},
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
                 widget.GroupBox(
                     fontsize=16,
                     borderwidth=3,
@@ -192,9 +195,47 @@ screens = [
                     linewidth=1,
                     padding=10
                 ),
-                widget.Prompt(),
+                widget.CurrentLayoutIcon(
+                    scale=0.75,
+                    padding=1,
+                    ),
+                widget.CurrentLayout(
+                    fontsize=14,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
                 widget.WindowName(
                     fontsize=14,
+                ),
+                widget.Systray(
+                    background=colors[0],
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/mouse.png',
+                    margin=4,
+                ),
+                widget.GenPollText(
+                    name='mouse-battery',
+                    update_interval=600,
+                    fontsize=14,
+                    fmt='{}',
+                    func= lambda: subprocess.check_output(
+                        '/home/alex/.local/bin/mouse-battery',
+                    ).decode('utf-8').strip(),
+                    mouse_callbacks = {
+                        'Button1':
+                        lazy.widget['mouse-battery'].eval('self.update(self.poll())'),
+                    },
                 ),
                 widget.Sep(
                     background=colors[0],
@@ -207,7 +248,7 @@ screens = [
                     foreground=colors[4],
                     fontsize=14,
                     format="%d %B (%A) %H:%M",
-                ),
+                ), 
             ],
             24,
             background=colors[0],
@@ -263,12 +304,12 @@ screens = [
                     linewidth=1,
                     padding=10
                 ),
-                widget.Prompt(),
-                widget.WindowName(
+                widget.CurrentLayoutIcon(
+                    scale=0.75,
+                    padding=1,
+                    ),
+                widget.CurrentLayout(
                     fontsize=14,
-                ),
-                widget.Systray(
-                    background=colors[0],
                 ),
                 widget.Sep(
                     background=colors[0],
@@ -276,22 +317,8 @@ screens = [
                     linewidth=1,
                     padding=10
                 ),
-                widget.Image(
-                    filename='/home/alex/.config/qtile/assets/mouse.png',
-                    margin=4,
-                ),
-                widget.GenPollText(
-                    name='mouse-battery',
-                    update_interval=600,
+                widget.WindowName(
                     fontsize=14,
-                    fmt='{}',
-                    func= lambda: subprocess.check_output(
-                        '/home/alex/.local/bin/mouse-battery',
-                    ).decode('utf-8').strip(),
-                    mouse_callbacks = {
-                        'Button1':
-                        lazy.widget['mouse-battery'].eval('self.update(self.poll())'),
-                    },
                 ),
                 widget.Sep(
                     background=colors[0],
@@ -304,7 +331,7 @@ screens = [
                     foreground=colors[4],
                     fontsize=14,
                     format="%d %B (%A) %H:%M",
-                ), 
+                ),
             ],
             24,
             background=colors[0],
