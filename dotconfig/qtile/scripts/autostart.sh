@@ -15,8 +15,7 @@ function run {
 setxkbmap de &
 
 # Set screen resolution
-xrandr --output DP-1 --mode 1920x1080
-xrandr --output HDMI-1 --mode 1920x1080 --left-of DP-1
+xrandr --output DP-1 --mode 1920x1080 --pos 0x0 --rotate left --output DP-2 --off --output HDMI-1 --primary --mode 1920x1080 --pos 1080x420 --rotate normal --output HDMI-2 --off
 
 # set wallpaper
 feh --no-fehbg --bg-fill '/home/alex/Bilder/wallpapers/wallpaper.png' 
@@ -25,6 +24,5 @@ feh --no-fehbg --bg-fill '/home/alex/Bilder/wallpapers/wallpaper.png'
 /usr/bin/lxpolkit &
 dunst &
 picom &
-
 discord --start-minimized &
 steam -silent & 

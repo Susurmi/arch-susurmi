@@ -121,14 +121,14 @@ layouts = [
         border_focus=colors[3],
         border_normal=colors[1],
         border_width=3,
-	    margin=[5,10,5,5],
+	    margin=[5,5,5,5],
         ),
     layout.Max(
         border_focus_stack=colors[3], 
         border_focus=colors[3],
         border_normal=colors[1],
         border_width=3,
-	    margin=[5,10,5,5],
+	    margin=[5,5,5,5],
         ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -144,7 +144,7 @@ layouts = [
         border_focus=colors[3],
         border_normal=colors[1],
         border_width=3,
-	    margin=[5,10,5,5],
+	    margin=[5,5,5,5],
         ),
     # layout.Zoomy(),
 ]
@@ -157,6 +157,89 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 screens = [
+    Screen(
+        top=bar.Bar(
+            [
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/arch.png',
+                    margin=2,
+                    mouse_callbacks={'Button1': lazy.shutdown()},
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.GroupBox(
+                    fontsize=16,
+                    borderwidth=3,
+                    highlight_method='block',
+                    active=colors[5],
+                    block_highlight_text_color=colors[4],
+                    highlight_color=colors[2],
+                    inactive=colors[2],
+                    foreground=colors[2],
+                    background=colors[0],
+                    this_current_screen_border=colors[0],
+                    this_screen_border=colors[0],
+                    other_current_screen_border=colors[0],
+                    other_screen_border=colors[0],
+                    urgent_border=colors[0],
+                    rounded=True,
+                    disable_drag=True,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.Image(
+                    filename='/home/alex/.config/qtile/assets/search.png',
+                    margin=3,
+                    mouse_callbacks={'Button1': lazy.spawn("rofi -show run")},
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.CurrentLayoutIcon(
+                    scale=0.75,
+                    padding=1,
+                    ),
+                widget.CurrentLayout(
+                    fontsize=14,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.WindowName(
+                    fontsize=14,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.Clock(
+                    background=colors[0],
+                    foreground=colors[4],
+                    fontsize=14,
+                    format="%d %B (%A) %H:%M",
+                ),
+            ],
+            24,
+            background=colors[0],
+	        margin=[5, 5, 0, 5]
+        ),
+    ),
     Screen(
         top=bar.Bar(
             [
@@ -252,90 +335,7 @@ screens = [
             ],
             24,
             background=colors[0],
-	        margin=[10, 10, 4, 10]
-        ),
-    ),
-    Screen(
-        top=bar.Bar(
-            [
-                widget.Image(
-                    filename='/home/alex/.config/qtile/assets/arch.png',
-                    margin=2,
-                    mouse_callbacks={'Button1': lazy.shutdown()},
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
-                widget.GroupBox(
-                    fontsize=16,
-                    borderwidth=3,
-                    highlight_method='block',
-                    active=colors[5],
-                    block_highlight_text_color=colors[4],
-                    highlight_color=colors[2],
-                    inactive=colors[2],
-                    foreground=colors[2],
-                    background=colors[0],
-                    this_current_screen_border=colors[0],
-                    this_screen_border=colors[0],
-                    other_current_screen_border=colors[0],
-                    other_screen_border=colors[0],
-                    urgent_border=colors[0],
-                    rounded=True,
-                    disable_drag=True,
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
-                widget.Image(
-                    filename='/home/alex/.config/qtile/assets/search.png',
-                    margin=3,
-                    mouse_callbacks={'Button1': lazy.spawn("rofi -show run")},
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
-                widget.CurrentLayoutIcon(
-                    scale=0.75,
-                    padding=1,
-                    ),
-                widget.CurrentLayout(
-                    fontsize=14,
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
-                widget.WindowName(
-                    fontsize=14,
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
-                widget.Clock(
-                    background=colors[0],
-                    foreground=colors[4],
-                    fontsize=14,
-                    format="%d %B (%A) %H:%M",
-                ),
-            ],
-            24,
-            background=colors[0],
-	        margin=[10, 10, 4, 10]
+	        margin=[5, 5, 0, 5]
         ),
     ),
 ]
