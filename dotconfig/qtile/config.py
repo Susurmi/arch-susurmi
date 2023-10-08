@@ -89,7 +89,7 @@ keys = [
     Key([mod], "o", lazy.spawn("obsidian")),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "123456"]
 
 for i in groups:
     keys.extend(
@@ -156,6 +156,25 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+group_box_settings = {
+    "padding": 3,
+    "borderwidth": 4,
+    "active": colors[5],
+    "inactive": colors[4],
+    "disable_drag": True,
+    "rounded": True,
+    "highlight_color": colors[2],
+    "block_highlight_text_color": colors[6],
+    "highlight_method": "block",
+    "this_current_screen_border": colors[1],
+    "this_screen_border": colors[1],
+    "other_current_screen_border": colors[1],
+    "other_screen_border": colors[1],
+    "foreground": colors[0],
+    "background": colors[0],
+    "urgent_border": colors[3],
+}
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -172,22 +191,8 @@ screens = [
                     padding=10
                 ),
                 widget.GroupBox(
+                    **group_box_settings,
                     fontsize=16,
-                    borderwidth=3,
-                    highlight_method='block',
-                    active=colors[5],
-                    block_highlight_text_color=colors[4],
-                    highlight_color=colors[2],
-                    inactive=colors[2],
-                    foreground=colors[2],
-                    background=colors[0],
-                    this_current_screen_border=colors[0],
-                    this_screen_border=colors[0],
-                    other_current_screen_border=colors[0],
-                    other_screen_border=colors[0],
-                    urgent_border=colors[0],
-                    rounded=True,
-                    disable_drag=True,
                 ),
                 widget.Sep(
                     background=colors[0],
@@ -199,19 +204,6 @@ screens = [
                     filename='/home/alex/.config/qtile/assets/search.png',
                     margin=3,
                     mouse_callbacks={'Button1': lazy.spawn("rofi -show run")},
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
-                widget.CurrentLayoutIcon(
-                    scale=0.75,
-                    padding=1,
-                    ),
-                widget.CurrentLayout(
-                    fontsize=14,
                 ),
                 widget.Sep(
                     background=colors[0],
@@ -234,6 +226,16 @@ screens = [
                     fontsize=14,
                     format="%d %B (%A) %H:%M",
                 ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.CurrentLayoutIcon(
+                    scale=0.75,
+                    padding=5,
+                ),
             ],
             24,
             background=colors[0],
@@ -243,30 +245,6 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(
-                    fontsize=16,
-                    borderwidth=3,
-                    highlight_method='block',
-                    active=colors[5],
-                    block_highlight_text_color=colors[4],
-                    highlight_color=colors[2],
-                    inactive=colors[2],
-                    foreground=colors[2],
-                    background=colors[0],
-                    this_current_screen_border=colors[0],
-                    this_screen_border=colors[0],
-                    other_current_screen_border=colors[0],
-                    other_screen_border=colors[0],
-                    urgent_border=colors[0],
-                    rounded=True,
-                    disable_drag=True,
-                ),
-                widget.Sep(
-                    background=colors[0],
-                    foreground=colors[3],
-                    linewidth=1,
-                    padding=10
-                ),
                 widget.Image(
                     filename='/home/alex/.config/qtile/assets/search.png',
                     margin=3,
@@ -278,12 +256,9 @@ screens = [
                     linewidth=1,
                     padding=10
                 ),
-                widget.CurrentLayoutIcon(
-                    scale=0.75,
-                    padding=1,
-                    ),
-                widget.CurrentLayout(
-                    fontsize=14,
+                widget.GroupBox(
+                    **group_box_settings,
+                    fontsize=16,
                 ),
                 widget.Sep(
                     background=colors[0],
@@ -331,7 +306,17 @@ screens = [
                     foreground=colors[4],
                     fontsize=14,
                     format="%d %B (%A) %H:%M",
-                ), 
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.CurrentLayoutIcon(
+                    scale=0.75,
+                    padding=5,
+                    ),
             ],
             24,
             background=colors[0],
