@@ -220,6 +220,34 @@ screens = [
                     linewidth=1,
                     padding=10
                 ),
+                widget.CheckUpdates(
+                    fontsize=14,
+                    distro='Arch',
+                    update_interval=3600,
+                    initial_text="Checking for updates!",
+                    restart_indicator="Restart now!",
+                    no_update_string="Up to date!",
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
+                widget.OpenWeather(
+                    location='',
+                    format='{location_city}: {main_temp}°{units_temperature}',
+                    app_key='',
+                    language='de',
+                    fontsize=14,
+                    update_interval=3600,
+                ),
+                widget.Sep(
+                    background=colors[0],
+                    foreground=colors[3],
+                    linewidth=1,
+                    padding=10
+                ),
                 widget.Clock(
                     background=colors[0],
                     foreground=colors[4],
