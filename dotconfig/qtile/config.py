@@ -50,9 +50,9 @@ keys = [
 
 groups = []
 
-group_names = ["1", "2", "3", "4", "5", "6"]
-group_labels = ["󰣇", "󰈹", "󰓓", "󰙯", "", ""]
-group_layouts = ["columns", "verticaltile", "columns", "columns", "columns", "columns"]
+group_names = ["1", "2", "3", "4", "5", "6", "7"]
+group_labels = ["󰣇", "󰈹", "󰓓", "󰙯", "", "", ""]
+group_layouts = ["columns", "verticaltile", "columns", "columns", "verticaltile", "columns", "columns"]
 
 for i in range(len(group_names)):
     groups.append(
@@ -183,8 +183,10 @@ screens = [
             ],
             24,
             background=colors[0],
-	        margin=[0, 0, 0, 0]
+	        margin=[0, 0, 0, 0],
         ),
+        wallpaper="",
+        wallpaper_mode="fill",
     ),
     Screen(
         top=bar.Bar(
@@ -248,6 +250,8 @@ screens = [
             background=colors[0],
 	        margin=[0, 0, 0, 0]
         ),
+        wallpaper="",
+        wallpaper_mode="fill"
     ),
 ]
 
