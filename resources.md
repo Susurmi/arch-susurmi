@@ -4,12 +4,10 @@
 
 > https://wiki.archlinux.org/
 
-> https://github.com/lukesmithxyz
-
 > https://github.com/Jguer/yay
-
-> https://suckless.org/
 
 > https://patorjk.com/software/taag/
 
-> https://chat.openai.com/
+> https://github.com/yokoffing/filterlists?tab=readme-ov-file
+
+> https://wiki.hyprland.org/
