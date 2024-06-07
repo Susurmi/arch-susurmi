@@ -1,14 +1,14 @@
 # My Browser Setup
 
 **Browser**: [**Brave**](https://www.brave.com)     
-Version as of writing this: **1.66.118** [AUR BIN Version](https://aur.archlinux.org/packages/brave-bin)        
-**Theme** i use : [Synth Wave](https://chromewebstore.google.com/detail/synthwave-84/kdanjdeljjimoalfjcjadmcbfkmolmnj)
+Version für diese Einstellungen/Erweiterungen/Themen : **1.66.118** [AUR BIN Version](https://aur.archlinux.org/packages/brave-bin)        
+**Thema** das ich nutze : [Synth Wave](https://chromewebstore.google.com/detail/synthwave-84/kdanjdeljjimoalfjcjadmcbfkmolmnj)
         
 ---
 
 ## Einstellungen:
 
-(Wo möglich alle Anzeigen von Brave Programmen mit rechst klick deaktivieren/verbergen)
+(Wo möglich alle Anzeigen von Brave Programmen mit rechts klick deaktivieren/verbergen)
 
 + **Start**
 	- Beim start > „Neuer Tab“-Seite öffnen
@@ -104,20 +104,24 @@ Version as of writing this: **1.66.118** [AUR BIN Version](https://aur.archlinux
 
 ---
 
-## Erweiterung:
+## Erweiterungen:
 + **Ublock**  
-	- blockt Werbung und andere Dritt Anbieter Anzeigen 
-	- ich empfehle diese [Gtihub Repo](https://github.com/yokoffing/filterlists?tab=readme-ov-file) zu lesen 		für optimierte Filterlisten
-	- [um **Youtube Shorts** zu blocken.](https://github.com/gijsdev/ublock-hide-yt-shorts)
+	- blockt Werbung und andere Dritt Anbieter Anzeigen.
+	- ich empfehle diese [Gtihub Repo](https://github.com/yokoffing/filterlists?tab=readme-ov-file) zu lesen 		für optimierte Filterlisten.
+	- [um **Youtube Shorts** zu blocken.](https://github.com/gijsdev/ublock-hide-yt-shorts).
 + **Privacy Badger**  
-	- um Dritt Anbieter Tracker zu blocken
+	- um Dritt Anbieter Tracker zu blocken.
 + **Bitwarden Extension**  
-	- mein Passwort Manger des vertrauens 
+	- mein Passwort Manager des vertrauens.
 + **Youtube Sponsor Block**
-	- blockt/überspringt automatisch Sponsor Blöcke in Youtube Videos
+	- blockt/überspringt automatisch Sponsor Blöcke in Youtube Videos.
 + **Automatic Twitch**  
-	- Sammelt automatisch Kanal Punkte und Drops ein
+	- Sammelt automatisch Kanal Punkte und Drops ein.
 + **Return YouTube Dislike**
 	- Zeigt die Anzahl der Daumen runter eines Videos wieder an.
++ **Dark Reader**
+	- erzeugt automatisch eine "Dark Mode" Version falls die aufgerufene Seite keinen hat.
++ **I still don't care about Cookies**
+	- Kümmert sich automatisch um Cookie Pop-Ups.
 
 ---
