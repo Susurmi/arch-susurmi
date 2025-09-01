@@ -25,7 +25,7 @@
 **Keyboard**: Logitech MX Keys  
 **Headset**: HyperX Cloud Flight  
 **Speakers**: Logitech Z333 2.1  
-**Monitor**: / BenQ EL2870U
+**Monitor**: Samsung Odyssey G9 49" Ultrawide
 
 <br>
 
